@@ -1,0 +1,37 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: multi-tenant-task-manager
+
+  datasource:
+    url: jdbc:h2:mem:taskdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: ""
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    open-in-view: false
+
+app:
+  jwt:
+    # Base64 encoded 256-bit secret (used only for this assignment/demo)
+    secret: dGVjaHB1bHNlLWl0LW11bHRpLXRlbmFudC10YXNrLW1hbmFnZXItc3VwZXItc2VjcmV0LWtleS0yMDI2LWFzc2lnbm1lbnQ=
+    expiration-ms: 86400000   # 24 hours
+
+logging:
+  level:
+    com.techpulse.taskmanager: DEBUG
+    org.springframework.security: INFO
